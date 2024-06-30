@@ -4,10 +4,12 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
@@ -51,7 +53,7 @@ fun HomeView(context: Context) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 10.dp, start = 10.dp, end = 10.dp),
-            color = MaterialTheme.colorScheme.background,
+            color = MaterialTheme.colorScheme.primaryContainer,
         ) {
 //            Todo Lower part than that of the top bar
         }
@@ -67,7 +69,11 @@ fun HomeTopBar(context: Context) {
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
         modifier = Modifier.wrapContentSize()
     ) {
-        Row {
+        Row(modifier = Modifier
+            .padding(1.dp)
+            .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
             ClickableCurrentCompany(context = context)
             ClickableCompanyLOGO(context)
 
@@ -76,19 +82,33 @@ fun HomeTopBar(context: Context) {
 
 }
 
+
+//Issue in adding Company Logo
 @Composable
 fun ClickableCompanyLOGO(context: Context) {
     Surface(
+        color = Color.Black,
+        modifier = Modifier.wrapContentSize(),
         onClick = {
             Toast.makeText(context, "Company Logo", Toast.LENGTH_SHORT).show()
         }
     ) {
+        Surface(
+//            modifier = Modifier.wrapContentSize(),
+            color = Color.Gray,
+            shadowElevation = 4.dp,
+            border = BorderStroke(1.dp, Color.Gray),
+        ) {
+            Text(text = "Logo")
+
+
 //        Image(painter = painterResource(id =R.drawable.company_logo), contentDescription = "Company_Logo")
+        }
     }
 }
 
 @Composable
-fun ClickableCurrentCompany(context:Context) {
+fun ClickableCurrentCompany(context: Context) {
     Surface(
         onClick = {
             Toast.makeText(context, "Company Name", Toast.LENGTH_SHORT).show()
@@ -127,5 +147,5 @@ fun ClickableCurrentCompany(context:Context) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeViewPreview() {
-    ClickableCurrentCompany(context = LocalContext.current)
+    ClickableCompanyLOGO(context = LocalContext.current)
 }
