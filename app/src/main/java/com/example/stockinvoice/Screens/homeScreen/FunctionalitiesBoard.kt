@@ -1,4 +1,4 @@
-package com.example.stockinvoice.homeScreen
+package com.example.stockinvoice.Screens.homeScreen
 
 import android.content.Context
 import android.widget.Toast

@@ -1,4 +1,4 @@
-package com.example.stockinvoice.homeScreen
+package com.example.stockinvoice.Screens.homeScreen
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,7 +25,7 @@ fun HomeView(
         modifier = Modifier
             .fillMaxSize()
             .padding(5.dp)
-            .background(MaterialTheme.colorScheme.background)
+            .background(if (isDarkTheme) Color.Black else Color.White)
     ) {
         //function call for Topbar
         HomeTopbar(context = context, isDarkTheme)

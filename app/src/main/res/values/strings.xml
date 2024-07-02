@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">StockInvoice</string>
+    <string name="hello">Hello there,</string>
+    <string name="create_account">Create an Account</string>
+    <string name="welcome">Welcome Back</string>
+    <string name="terms_and_conditions">By accepting you agree to our terms and conditions</string>
+    <string name="signUpItemsCount">1</string>
 </resources>

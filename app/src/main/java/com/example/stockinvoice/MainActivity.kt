@@ -1,20 +1,14 @@
 package com.example.stockinvoice
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.stockinvoice.homeScreen.HomeView
+import com.example.stockinvoice.Screens.signInScreen.SignUpPage
 import com.example.stockinvoice.ui.theme.StockInvoiceTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,13 +23,8 @@ class MainActivity : ComponentActivity() {
 //        enableEdgeToEdge()
         setContent {
             val isDarkTheme = isSystemInDarkTheme()
-            StockInvoiceTheme {
-                val context = LocalContext.current
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeView(context,isDarkTheme)
-                }
+            SignUpPage()
             }
         }
     }
-}
 
