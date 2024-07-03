@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276924526099",
+    "project_id": "stockinvoicen",
+    "storage_bucket": "stockinvoicen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276924526099:android:d542240cccf6472ff2d9e6",
+        "android_client_info": {
+          "package_name": "com.example.stockinvoice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf-_jTb_qz6R0TIdOsa2w9QHKBAvzX-TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
