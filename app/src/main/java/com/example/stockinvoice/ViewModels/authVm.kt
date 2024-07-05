@@ -7,11 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.stockinvoice.DataBase.SharedPref
-import com.example.stockinvoice.DataBase.usermodel
+import com.example.stockinvoice.DataBase.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -50,10 +48,10 @@ class authVM : ViewModel() {
     private fun getData(uid: String, context: Context) {
         userRef.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val userData = snapshot.getValue(usermodel::class.java)
+                val userData = snapshot.getValue(UserModel::class.java)
                 userData?.let {
                     SharedPref.storeData(
-                        it.name, it.mail, it.Phonenum, it.GSTnum, it.uid.toString(), context
+                        it.name, it.mail, it.phoneNo, it.gstNum, it.uid.toString(), context
                     )
                 }
             }
@@ -104,7 +102,7 @@ class authVM : ViewModel() {
     }
 
     private fun savedata(name: String, mail: String, Phonenum: String,GSTnum:String, password: String, uid: String?, context: Context) {
-        val data = usermodel(name,mail,Phonenum,GSTnum,password,uid!!)
+        val data = UserModel(name,mail,Phonenum,GSTnum,password,uid!!)
         userRef.child(uid).setValue(data)
             .addOnSuccessListener {
                 SharedPref.storeData(name, mail, Phonenum,GSTnum, uid, context)

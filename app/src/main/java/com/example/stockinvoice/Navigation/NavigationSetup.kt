@@ -1,32 +1,33 @@
 package com.example.stockinvoice.Navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.stockinvoice.Screens.LoginScreen
-import com.example.stockinvoice.Screens.RegisterScreen
 import com.example.stockinvoice.Screens.SplashScreen
+import com.example.stockinvoice.Screens.signInScreen.LogInScreen
+import com.example.stockinvoice.Screens.signInScreen.SignUpPage
 
 
 @Composable
-fun Navgraph(Navcontro:NavHostController) {
+fun Navgraph(navController: NavHostController) {
 
+    var startDestination = routes.splash.route
 
-    NavHost(navController = Navcontro, startDestination = routes.splash.route) {
+    NavHost(navController = navController, startDestination = startDestination) {
 
         composable(route = routes.splash.route) {
-            SplashScreen(Navcontro)
+            SplashScreen(navController)
         }
 
 
         composable(route = routes.login.route) {
-           LoginScreen(Navcontro)
+            LogInScreen(navController)
+            startDestination = routes.login.route
         }
 
         composable(route = routes.register.route) {
-          RegisterScreen(Navcontro)
+            SignUpPage(navController)
         }
     }
 }

@@ -1,11 +1,11 @@
 package com.example.stockinvoice.DataBase
 
 
-data class usermodel(
+data class UserModel(
     val name: String = "",
     val mail: String = "",
-    val Phonenum: String = "",
-    val GSTnum: String = "",
+    val phoneNo: String = "",
+    val gstNum: String = "",
     val password: String = "",
     val uid: String = ""   //firebase uid
 )

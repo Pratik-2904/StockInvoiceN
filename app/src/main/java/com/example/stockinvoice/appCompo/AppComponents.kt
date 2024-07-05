@@ -20,10 +20,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,7 +33,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -54,82 +55,104 @@ import com.example.stockinvoice.ui.theme.componentShapes
 
 
 @Composable
-fun NormalTextComponent(value: String) {
+fun NormalTextComponent(
+    value: String,
+    themeTextColor: Color
+) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 40.dp), text = value, style = TextStyle(
-            fontSize = 24.sp, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal
+            .heightIn(min = 40.dp),
+        text = value,
+        style = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal,
+            color = themeTextColor
+        ),
+        textAlign = TextAlign.Center
 
-        ), color = colorResource(id = R.color.colorText), textAlign = TextAlign.Center
     )
 }
 
 @Composable
-fun HeadingTextComponent(value: String) {
+fun HeadingTextComponent(
+    value: String,
+    themeTextColor: Color,
+) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(0.dp), text = value, style = TextStyle(
             fontSize = 30.sp, fontWeight = FontWeight.Bold, fontStyle = FontStyle.Normal
 
-        ), color = colorResource(id = R.color.colorText), textAlign = TextAlign.Center
+        ), color = themeTextColor, textAlign = TextAlign.Center
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextField(labelvalue: String, icon: ImageVector) {
+fun MyTextField(
+    labelValue: String,
+    icon: ImageVector,
+    themeTextColor: Color,
+    themeSurfaceColor: Color
+) {
     val text = remember { mutableStateOf("") }
 
-    OutlinedTextField(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = BgColor),
-        label = { Text(text = labelvalue) },
-        placeholder = { Text(text = labelvalue) },
-        value = text.value,
-        onValueChange = { text.value = it },
-        keyboardOptions = KeyboardOptions.Default,
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.colorPrimary),
-            focusedLabelColor = colorResource(id = R.color.colorPrimary),
-            cursorColor = colorResource(R.color.colorPrimary),
-
+            .background(color = themeSurfaceColor)
+    ) {
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth().background(color = themeSurfaceColor),
+            label = { Text(text = labelValue, color = themeTextColor) },
+            value = text.value,
+            onValueChange = { text.value = it },
+            keyboardOptions = KeyboardOptions.Default,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = themeTextColor,
+                focusedLabelColor = themeTextColor,
+                cursorColor = themeTextColor,
             ),
-        shape = componentShapes.small,
-        leadingIcon = {
-            Icon(imageVector = icon, contentDescription = "Icon", tint = PrimaryColor)
-        }
-
-    )
+            shape = MaterialTheme.shapes.small,
+            leadingIcon = {
+                Icon(imageVector = icon, contentDescription = "Icon", tint = themeTextColor)
+            }
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordTextField(labelvalue: String, icon: ImageVector) {
+fun PasswordTextField(
+    labelValue: String, icon: ImageVector,
+    themeTextColor: Color,
+    themeSurfaceColor: Color
+) {
     val text = remember { mutableStateOf("") }
     val isPasswordVisible = remember { mutableStateOf(false) }
 
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = BgColor),
-        label = { Text(text = labelvalue) },
+            .background(color = themeSurfaceColor),
+        label = { Text(text = labelValue) },
         value = text.value,
         onValueChange = { text.value = it },
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password
         ),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.colorPrimary),
-            focusedLabelColor = colorResource(id = R.color.colorPrimary),
-            cursorColor = colorResource(R.color.colorPrimary),
+            focusedBorderColor = themeTextColor,
+            focusedLabelColor =  themeTextColor,
+            cursorColor =  themeTextColor,
 
             ),
         shape = componentShapes.small,
         leadingIcon = {
-            Icon(imageVector = icon, contentDescription = "Icon", tint = PrimaryColor)
+            Icon(imageVector = icon, contentDescription = "Icon", tint = themeTextColor)
         },
         trailingIcon = {
             val icon2 = if (!isPasswordVisible.value) {
@@ -147,8 +170,7 @@ fun PasswordTextField(labelvalue: String, icon: ImageVector) {
                     modifier = Modifier.aspectRatio(0.6f),
                     painter = painterResource(id = icon2),
                     contentDescription = description,
-                    tint = PrimaryColor,
-
+                    tint = themeTextColor,
                     )
             }
         },
@@ -158,7 +180,12 @@ fun PasswordTextField(labelvalue: String, icon: ImageVector) {
 }
 
 @Composable
-fun CheckBoxComponent(value: String) {
+fun CheckBoxComponent(
+    value: String,
+    themebackgroundColor: MutableState<Color>,
+    themeTextColor: MutableState<Color>,
+    themeSurfaceColor: MutableState<Color>
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -170,18 +197,28 @@ fun CheckBoxComponent(value: String) {
             checkedState.value = it
         })
 
-        ClickableTextComponent(value = value,
+        ClickableTextComponent(
+            value = value,
             onTextSelected = {
                 //Todo On text Selected Navigate to Terms and Conditions
 
-            })
+            },
+            themebackgroundColor = themebackgroundColor,
+            themeTextColor = themeTextColor,
+            themeSurfaceColor = themeSurfaceColor
+        )
 
     }
 
 }
 
 @Composable
-fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit) {
+fun ClickableTextComponent(
+    value: String,
+    themebackgroundColor: MutableState<Color>,
+    themeTextColor: MutableState<Color>,
+    themeSurfaceColor: MutableState<Color>, onTextSelected: (String) -> Unit
+) {
 
     val initialString = "By accepting you accept our "
     val terms = " Terms and Conditions"
@@ -213,7 +250,12 @@ fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit) {
 }
 
 @Composable
-fun Buttoncomposable(value: String) {
+fun Buttoncomposable(
+    value: String,
+    themebackgroundColor: MutableState<Color>,
+    themeTextColor: MutableState<Color>,
+    themeSurfaceColor: MutableState<Color>
+) {
     Button(
         modifier = Modifier
             .fillMaxWidth()
@@ -249,7 +291,10 @@ fun Buttoncomposable(value: String) {
 }
 
 @Composable
-fun DividerTextField(value: String) {
+fun DividerTextField(
+    value: String,
+    themeTextColor: Color,
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -258,19 +303,19 @@ fun DividerTextField(value: String) {
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            color = Color.Gray,
+            color =themeTextColor,
             thickness = 1.dp
         )
         Text(
             text = value,
             fontSize = 18.sp,
-            color = TextColor
+            color = themeTextColor
         )
         HorizontalDivider(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            color = Color.Gray,
+            color = themeTextColor,
             thickness = 1.dp
         )
 
@@ -278,7 +323,11 @@ fun DividerTextField(value: String) {
 }
 
 @Composable
-fun GoogleSignInButton() {
+fun GoogleSignInButton(
+    themebackgroundColor: MutableState<Color>,
+    themeTextColor: MutableState<Color>,
+    themeSurfaceColor: MutableState<Color>
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -299,7 +348,12 @@ fun GoogleSignInButton() {
 }
 
 @Composable
-fun ClickableLogInTextComponent(onTextSelected: (String) -> Unit) {
+fun ClickableLogInTextComponent(
+    themebackgroundColor: MutableState<Color>,
+    themeTextColor: MutableState<Color>,
+    themeSurfaceColor: MutableState<Color>,
+    onTextSelected: (String) -> Unit
+) {
 
     val initialString = "Already Have An account? "
     val LogInText = "LogIn"

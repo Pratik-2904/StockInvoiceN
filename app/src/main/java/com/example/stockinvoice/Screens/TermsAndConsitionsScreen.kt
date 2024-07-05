@@ -13,14 +13,14 @@ import com.example.stockinvoice.R
 import com.example.stockinvoice.appCompo.NormalTextComponent
 
 @Composable
-fun TermsAndConditionsScreen() {
+fun TermsAndConditionsScreen(themeTextColor: Color) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(10.dp)
     ) {
-        NormalTextComponent(value = stringResource(id = R.string.terms_and_conditions))
+        NormalTextComponent(value = stringResource(id = R.string.terms_and_conditions),themeTextColor)
 
     }
 }
