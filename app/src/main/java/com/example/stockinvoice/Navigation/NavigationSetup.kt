@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.stockinvoice.Screens.SplashScreen
+import com.example.stockinvoice.Screens.TermsAndConditionsScreen
 import com.example.stockinvoice.Screens.signInScreen.LogInScreen
 import com.example.stockinvoice.Screens.signInScreen.SignUpPage
 
@@ -28,6 +29,9 @@ fun Navgraph(navController: NavHostController) {
 
         composable(route = routes.register.route) {
             SignUpPage(navController)
+        }
+        composable(route = routes.terms.route){
+            TermsAndConditionsScreen(navController)
         }
     }
 }

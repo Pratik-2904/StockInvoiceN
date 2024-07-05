@@ -104,7 +104,10 @@ fun SignUpPage(navController: NavController) {
                     value = "Remember Me",
                     themeBackGroundColor,
                     themeTextColor,
-                    themeSurfaceColor
+                    themeSurfaceColor,
+                    onTextSelected = {
+                        navController.navigate(route = routes.terms.route)
+                    }
                 )
 
                 Spacer(modifier = Modifier.heightIn(40.dp))

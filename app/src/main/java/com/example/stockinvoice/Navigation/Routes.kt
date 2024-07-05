@@ -10,4 +10,5 @@ sealed class routes(val route: String) {
     object bottomNav: routes("bottomNav")
     object login: routes("login")
     object register: routes("register")
+    object terms : routes("terms")
 }

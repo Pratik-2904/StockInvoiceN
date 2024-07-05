@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.stockinvoice.R
 import com.example.stockinvoice.appCompo.NormalTextComponent
 
 @Composable
-fun TermsAndConditionsScreen(themeTextColor: Color) {
+fun TermsAndConditionsScreen(navController: NavController) {
+    val themeTextColor = Color.White
     Surface(
         modifier = Modifier
             .fillMaxSize()

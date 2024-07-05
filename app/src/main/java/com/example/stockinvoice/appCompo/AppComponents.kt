@@ -47,10 +47,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.stockinvoice.R
-import com.example.stockinvoice.ui.theme.BgColor
 import com.example.stockinvoice.ui.theme.PrimaryColor
 import com.example.stockinvoice.ui.theme.SecondaryColor
-import com.example.stockinvoice.ui.theme.TextColor
 import com.example.stockinvoice.ui.theme.componentShapes
 
 
@@ -184,7 +182,8 @@ fun CheckBoxComponent(
     value: String,
     themebackgroundColor: MutableState<Color>,
     themeTextColor: MutableState<Color>,
-    themeSurfaceColor: MutableState<Color>
+    themeSurfaceColor: MutableState<Color>,
+    onTextSelected: (String) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -199,10 +198,7 @@ fun CheckBoxComponent(
 
         ClickableTextComponent(
             value = value,
-            onTextSelected = {
-                //Todo On text Selected Navigate to Terms and Conditions
-
-            },
+            onTextSelected = onTextSelected,
             themebackgroundColor = themebackgroundColor,
             themeTextColor = themeTextColor,
             themeSurfaceColor = themeSurfaceColor
