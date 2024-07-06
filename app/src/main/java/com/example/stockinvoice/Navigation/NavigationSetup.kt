@@ -21,7 +21,6 @@ fun Navgraph(navController: NavHostController) {
             SplashScreen(navController)
         }
 
-
         composable(route = routes.login.route) {
             LogInScreen(navController)
             startDestination = routes.login.route

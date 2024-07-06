@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.stockinvoice.DataBase.SharedPref
-import com.example.stockinvoice.DataBase.UserModel
+import com.example.stockinvoice.DataBase.usermodel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -48,10 +48,10 @@ class authVM : ViewModel() {
     private fun getData(uid: String, context: Context) {
         userRef.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val userData = snapshot.getValue(UserModel::class.java)
+                val userData = snapshot.getValue(usermodel::class.java)
                 userData?.let {
                     SharedPref.storeData(
-                        it.name, it.mail, it.phoneNo, it.gstNum, it.uid.toString(), context
+                        it.name, it.mail, it.Phonenum, it.GSTnum,it.password,it.uid.toString(), context
                     )
                 }
             }
@@ -102,10 +102,10 @@ class authVM : ViewModel() {
     }
 
     private fun savedata(name: String, mail: String, Phonenum: String,GSTnum:String, password: String, uid: String?, context: Context) {
-        val data = UserModel(name,mail,Phonenum,GSTnum,password,uid!!)
+        val data = usermodel(name,mail,Phonenum,GSTnum,password,uid!!)
         userRef.child(uid).setValue(data)
             .addOnSuccessListener {
-                SharedPref.storeData(name, mail, Phonenum,GSTnum, uid, context)
+                SharedPref.storeData(name, mail, Phonenum,GSTnum, password,uid, context)
                 Toast.makeText(context, "Data saved", Toast.LENGTH_SHORT).show()
 
             }
@@ -117,7 +117,7 @@ class authVM : ViewModel() {
     fun logout(context: Context) {
         auth.signOut()
         _firebaseUser.postValue(null)
-        SharedPref.storeData(null,null,null,null,null,context)
+        SharedPref.storeData(null, null.toString(),null,null, null.toString(),null,context)
     }
 
 ///**********************below code is for phone authentication**********************************

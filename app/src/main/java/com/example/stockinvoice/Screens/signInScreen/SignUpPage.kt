@@ -1,5 +1,6 @@
 package com.example.stockinvoice.Screens.signInScreen
 
+import android.provider.ContactsContract.CommonDataKinds.Phone
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
@@ -14,17 +15,22 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.currentRecomposeScope
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.stockinvoice.Navigation.routes
 import com.example.stockinvoice.R
+import com.example.stockinvoice.ViewModels.authVM
 import com.example.stockinvoice.appCompo.Buttoncomposable
 import com.example.stockinvoice.appCompo.CheckBoxComponent
 import com.example.stockinvoice.appCompo.ClickableLogInTextComponent
@@ -35,9 +41,27 @@ import com.example.stockinvoice.appCompo.MyTextField
 import com.example.stockinvoice.appCompo.NormalTextComponent
 import com.example.stockinvoice.appCompo.PasswordTextField
 import com.example.stockinvoice.ui.theme.TextColor
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun SignUpPage(navController: NavController) {
+val vm: authVM = viewModel()
+ val firebaseruser =FirebaseAuth.getInstance().currentUser
+
+ LaunchedEffect(key1 = true) {
+     if(firebaseruser!=null){
+      //   navController.navigate(route = routes.home.route)    navigate to next screen
+     }
+ }
+
+    val name= remember { mutableStateOf("") }
+    val password=remember { mutableStateOf("") }
+    val mail= remember { mutableStateOf("aditya226vedpathak@gmail.com") }   //for trial purpose
+    val GSTnum= remember { mutableStateOf("") }
+    val phonenum= remember { mutableStateOf("") }
+    val context= LocalContext.current
+
 
     val count = stringResource(id = R.string.signUpItemsCount).toInt()
 
@@ -51,7 +75,9 @@ fun SignUpPage(navController: NavController) {
     val themeTextColor = remember {
         mutableStateOf(if (isDarkTheme) Color.White else TextColor)
     }
-    Surface(
+
+
+     Surface(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
@@ -88,9 +114,16 @@ fun SignUpPage(navController: NavController) {
                     themeTextColor = themeTextColor.value,
                     themeSurfaceColor = themeSurfaceColor.value
                 )
+
                 MyTextField(
                     labelValue = "Email",
                     Icons.Filled.Email,
+                    themeTextColor = themeTextColor.value,
+                    themeSurfaceColor = themeSurfaceColor.value
+                )
+                MyTextField(
+                    labelValue = "GST No.(Optional)",
+                    Icons.Filled.Person,
                     themeTextColor = themeTextColor.value,
                     themeSurfaceColor = themeSurfaceColor.value
                 )
@@ -118,6 +151,9 @@ fun SignUpPage(navController: NavController) {
                     themeTextColor,
                     themeSurfaceColor
                 )
+                //passs below function to above button on olick
+//                vm.signup(name.value,mail.value,phonenum.value,GSTnum.value,password.value,context )
+
                 Spacer(modifier = Modifier.height(20.dp))
                 DividerTextField(
                     value = "or",
@@ -140,10 +176,10 @@ fun SignUpPage(navController: NavController) {
 
     }
 }
-
-
-@Preview
-@Composable
-fun SignUpPagePreview() {
-    SignUpPage(navController = rememberNavController())
-}
+//
+//
+//@Preview
+//@Composable
+//fun SignUpPagePreview() {
+//    SignUpPage(navController = rememberNavController())
+//}

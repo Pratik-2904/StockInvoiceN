@@ -97,9 +97,9 @@ dependencies {
     //Splash Api
     implementation(libs.androidx.core.splashscreen)
 
-
-
-
+//for image insertion
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(kotlin("script-runtime"))
 
 
 }

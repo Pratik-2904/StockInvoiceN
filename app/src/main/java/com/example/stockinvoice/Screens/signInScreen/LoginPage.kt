@@ -19,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -28,9 +29,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.stockinvoice.Navigation.routes
 import com.example.stockinvoice.R
+import com.example.stockinvoice.ViewModels.authVM
 import com.example.stockinvoice.appCompo.Buttoncomposable
 import com.example.stockinvoice.appCompo.ClickableLogInTextComponent
 import com.example.stockinvoice.appCompo.DividerTextField
@@ -40,10 +43,24 @@ import com.example.stockinvoice.appCompo.MyTextField
 import com.example.stockinvoice.appCompo.NormalTextComponent
 import com.example.stockinvoice.appCompo.PasswordTextField
 import com.example.stockinvoice.ui.theme.TextColor
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
 fun LogInScreen(navController: NavController) {
+
+
+    val mail= remember { mutableStateOf("") }
+    val password=remember { mutableStateOf("") }
+
+    val vm: authVM = viewModel()
+    val firebaseruser = FirebaseAuth.getInstance().currentUser
+
+    LaunchedEffect(key1 = true) {
+        if(firebaseruser!=null){
+            //   navController.navigate(route = routes.home.route)    navigate to next screen
+        }
+    }
 
     val isDarkTheme = isSystemInDarkTheme()
 
@@ -101,6 +118,9 @@ fun LogInScreen(navController: NavController) {
                     themeTextColor = themeTextColor ,
                     themeSurfaceColor = themeSurfaceColor
                 )
+//add functionality to button on click
+//                vm.login(mail.value,password.value,context)
+
 
                 Spacer(modifier = Modifier.heightIn(40.dp))
 

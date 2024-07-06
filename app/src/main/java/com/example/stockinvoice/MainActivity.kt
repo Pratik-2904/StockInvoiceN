@@ -5,15 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.compose.rememberNavController
-import com.example.stockinvoice.Navigation.Navgraph
+import com.example.stockinvoice.Screens.LoginDialog
 import com.example.stockinvoice.ui.theme.StockInvoiceTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
 
 //        window.setFlags(
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -28,10 +25,10 @@ class MainActivity : ComponentActivity() {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    HomeView(context,isDarkTheme)
 //                }
-                val navController= rememberNavController()
-                Navgraph(navController)
+//                val navcontroller= rememberNavController()
+//                Navgraph(navcontroller)
 //SplashScreen()
-//LoginDialog()
+LoginDialog()
             }
         }
     }

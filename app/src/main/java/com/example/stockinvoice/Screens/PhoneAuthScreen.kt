@@ -178,7 +178,6 @@ private fun verifyPhoneNumberWithCode(
     val credential = PhoneAuthProvider.getCredential(verificationId, code)
     signInWithPhoneAuthCredential(context, credential, onVerificationComplete)
 }
-
 fun onLoginClicked(context: Context, phoneNumber: String, onCodeSent: () -> Unit) {
     auth.setLanguageCode("en")
     val callback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -196,7 +195,8 @@ fun onLoginClicked(context: Context, phoneNumber: String, onCodeSent: () -> Unit
                 else -> "Verification failed: ${e.message}"
             }
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            // Handle the failure appropriately (e.g., show error message)
+            // Log the error for debugging
+            println("PhoneAuthProvider.OnVerificationFailed: ${e.message}")
         }
 
         override fun onCodeSent(
@@ -221,8 +221,11 @@ fun onLoginClicked(context: Context, phoneNumber: String, onCodeSent: () -> Unit
 
     if (options != null) {
         PhoneAuthProvider.verifyPhoneNumber(options)
+    } else {
+        println("PhoneAuthOptions are null. Activity might be null.")
     }
 }
+
 
 private fun signInWithPhoneAuthCredential(
     context: Context,
