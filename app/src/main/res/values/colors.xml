@@ -13,4 +13,6 @@
     <color name="colorSecondary">#9DCEFF</color>
     <color name="colorAccent">#C58DF2</color>
     <color name="colorGray">#7B6F72</color>
+    <color name="colorProduct_Qty_BG">#FDE9E7</color>
+    <color name="colorProduct_Qty">#611106</color>
 </resources>
