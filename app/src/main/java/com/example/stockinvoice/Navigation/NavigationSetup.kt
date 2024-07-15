@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.stockinvoice.Screens.SplashScreen
-import com.example.stockinvoice.Screens.TermsAndConditionsScreen
-import com.example.stockinvoice.Screens.signInScreen.LogInScreen
-import com.example.stockinvoice.Screens.signInScreen.SignUpPage
+import com.example.stockinvoice.screens.SplashScreen
+import com.example.stockinvoice.screens.TermsAndConditionsScreen
+import com.example.stockinvoice.screens.signInScreen.LogInScreen
+import com.example.stockinvoice.screens.signInScreen.SignUpPage
 
 
 @Composable

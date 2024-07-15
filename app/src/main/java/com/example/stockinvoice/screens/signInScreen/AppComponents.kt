@@ -1,4 +1,4 @@
-package com.example.stockinvoice.appCompo
+package com.example.stockinvoice.screens.signInScreen
 
 import android.util.Log
 import androidx.compose.foundation.Image

@@ -1,4 +1,4 @@
-package com.example.stockinvoice.DataBase
+package com.example.stockinvoice.database
 
 import androidx.annotation.DrawableRes
 import com.example.stockinvoice.R

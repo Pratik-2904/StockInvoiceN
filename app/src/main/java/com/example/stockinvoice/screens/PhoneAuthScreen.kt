@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens
+package com.example.stockinvoice.screens
 
 import android.app.Activity
 import android.content.Context

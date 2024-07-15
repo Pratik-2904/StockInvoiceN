@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens
+package com.example.stockinvoice.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.stockinvoice.R
-import com.example.stockinvoice.appCompo.NormalTextComponent
+import com.example.stockinvoice.screens.signInScreen.NormalTextComponent
 
 @Composable
 fun TermsAndConditionsScreen(navController: NavController) {

@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens
+package com.example.stockinvoice.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

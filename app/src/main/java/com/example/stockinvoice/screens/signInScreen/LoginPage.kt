@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens.signInScreen
+package com.example.stockinvoice.screens.signInScreen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -34,14 +34,6 @@ import androidx.navigation.NavController
 import com.example.stockinvoice.Navigation.routes
 import com.example.stockinvoice.R
 import com.example.stockinvoice.ViewModels.authVM
-import com.example.stockinvoice.appCompo.Buttoncomposable
-import com.example.stockinvoice.appCompo.ClickableLogInTextComponent
-import com.example.stockinvoice.appCompo.DividerTextField
-import com.example.stockinvoice.appCompo.GoogleSignInButton
-import com.example.stockinvoice.appCompo.HeadingTextComponent
-import com.example.stockinvoice.appCompo.MyTextField
-import com.example.stockinvoice.appCompo.NormalTextComponent
-import com.example.stockinvoice.appCompo.PasswordTextField
 import com.example.stockinvoice.ui.theme.TextColor
 import com.google.firebase.auth.FirebaseAuth
 

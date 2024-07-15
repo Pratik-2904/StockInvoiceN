@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens.homeScreen
+package com.example.stockinvoice.screens.homeScreen
 
 import android.content.Context
 import androidx.compose.foundation.background

@@ -1,4 +1,4 @@
-package com.example.stockinvoice.Screens.homeScreen
+package com.example.stockinvoice.screens.homeScreen
 
 import android.content.Context
 import android.widget.Toast
@@ -34,7 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.stockinvoice.DataBase.dummyFunction
+import com.example.stockinvoice.database.dummyFunction
 
 @Composable
 fun FunctionalityBoard(isDarkTheme: Boolean,context: Context) {

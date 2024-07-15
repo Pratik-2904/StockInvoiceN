@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import com.example.stockinvoice.Screens.LoginDialog
+import com.example.stockinvoice.screens.product_services_Screen.ProductAndServicePreview
+import com.example.stockinvoice.screens.product_services_Screen.ProductAndServiceScreen
 import com.example.stockinvoice.ui.theme.StockInvoiceTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +29,8 @@ class MainActivity : ComponentActivity() {
 //                val navcontroller= rememberNavController()
 //                Navgraph(navcontroller)
 //SplashScreen()
-LoginDialog()
+//LoginDialog()
+                ProductAndServiceScreen()
             }
         }
     }

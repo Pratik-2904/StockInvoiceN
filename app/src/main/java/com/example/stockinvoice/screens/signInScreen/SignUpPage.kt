@@ -1,6 +1,5 @@
-package com.example.stockinvoice.Screens.signInScreen
+package com.example.stockinvoice.screens.signInScreen
 
-import android.provider.ContactsContract.CommonDataKinds.Phone
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
@@ -16,32 +15,19 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.currentRecomposeScope
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.stockinvoice.Navigation.routes
 import com.example.stockinvoice.R
 import com.example.stockinvoice.ViewModels.authVM
-import com.example.stockinvoice.appCompo.Buttoncomposable
-import com.example.stockinvoice.appCompo.CheckBoxComponent
-import com.example.stockinvoice.appCompo.ClickableLogInTextComponent
-import com.example.stockinvoice.appCompo.DividerTextField
-import com.example.stockinvoice.appCompo.GoogleSignInButton
-import com.example.stockinvoice.appCompo.HeadingTextComponent
-import com.example.stockinvoice.appCompo.MyTextField
-import com.example.stockinvoice.appCompo.NormalTextComponent
-import com.example.stockinvoice.appCompo.PasswordTextField
 import com.example.stockinvoice.ui.theme.TextColor
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable

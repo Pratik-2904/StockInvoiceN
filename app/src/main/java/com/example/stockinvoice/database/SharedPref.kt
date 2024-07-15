@@ -1,4 +1,4 @@
-package com.example.stockinvoice.DataBase
+package com.example.stockinvoice.database
 
 import android.annotation.SuppressLint
 import android.content.Context
